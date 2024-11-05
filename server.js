@@ -14,6 +14,10 @@ const allowedOrigins = [
     'http://localhost:3000', // Allow localhost during development
     'https://docu-ville.vercel.app' // Allow the production frontend
 ];
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 app.use(cors({
     origin: function (origin, callback) {
