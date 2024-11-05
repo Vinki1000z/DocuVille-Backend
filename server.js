@@ -10,7 +10,9 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://docu-ville.vercel.app', // Replace with your frontend origin
+}));
 
 
 app.use(express.json({ limit: "10mb" })); // Use Express's built-in method directly
