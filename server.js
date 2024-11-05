@@ -9,9 +9,21 @@ const mongoose = require("mongoose");
 // Create an Express application
 const app = express();
 const PORT = 5000;
+// CORS configuration
+const allowedOrigins = [
+    'http://localhost:3000', // Allow localhost during development
+    'https://docu-ville.vercel.app' // Allow the production frontend
+];
 
 app.use(cors({
-    origin: 'https://docu-ville.vercel.app', // Replace with your frontend origin
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true); // Allow the origin
+        } else {
+            callback(new Error('Not allowed by CORS')); // Reject the origin
+        }
+    }
 }));
 
 
