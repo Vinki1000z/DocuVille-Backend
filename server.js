@@ -45,4 +45,4 @@ app.use("/api/doc", docRoutes);
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-server.setTimeout(60000);
+
