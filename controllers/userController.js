@@ -137,7 +137,7 @@ exports.deleteUserInfo = async (req, res) => {
   }
 };
 exports.getUserRole = async (req, res) => {
-  console.log("hello");
+ res.send("Hello there");
   // try {
   //   // Assuming you have user ID from the authenticated token
   //   const userId = req.user.id;
