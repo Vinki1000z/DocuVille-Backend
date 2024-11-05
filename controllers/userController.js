@@ -137,23 +137,24 @@ exports.deleteUserInfo = async (req, res) => {
   }
 };
 exports.getUserRole = async (req, res) => {
-  try {
-    // Assuming you have user ID from the authenticated token
-    const userId = req.user.id;
+  console.log("hello");
+  // try {
+  //   // Assuming you have user ID from the authenticated token
+  //   const userId = req.user.id;
 
-    // Find the user in the database by ID
-    const user = await User.findById(userId);
+  //   // Find the user in the database by ID
+  //   const user = await User.findById(userId);
 
-    // Check if user exists
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
+  //   // Check if user exists
+  //   if (!user) {
+  //     return res.status(404).json({ message: 'User not found' });
+  //   }
 
 
-    // Respond with the user's role
-    res.status(200).json({ isAdmin: user.isAdmin });
-  } catch (error) {
-    console.error("Error fetching user role:", error);
-    res.status(500).json({ message: 'Server error' });
-  }
+  //   // Respond with the user's role
+  //   res.status(200).json({ isAdmin: user.isAdmin });
+  // } catch (error) {
+  //   console.error("Error fetching user role:", error);
+  //   res.status(500).json({ message: 'Server error' });
+  // }
 };
