@@ -12,10 +12,12 @@ const PORT = 5000;
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Your frontend URL
-    credentials: true,
+    origin: '*', // Allow requests from any origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
   })
 );
+
 
 app.use(express.json({ limit: "10mb" })); // Use Express's built-in method directly
 app.use(express.urlencoded({ limit: "10mb", extended: true })); // Use Express's built-in method directly
