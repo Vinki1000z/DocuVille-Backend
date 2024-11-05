@@ -10,13 +10,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 5000;
 
-app.use(
-  cors({
-    origin: '*', // Allow requests from any origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-  })
-);
+app.use(cors());
 
 
 app.use(express.json({ limit: "10mb" })); // Use Express's built-in method directly
