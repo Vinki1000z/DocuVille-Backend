@@ -12,17 +12,6 @@ const PORT = 5000;
 // CORS configuration
 app.use(cors());
 
-app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true); // Allow the origin
-        } else {
-            callback(new Error('Not allowed by CORS')); // Reject the origin
-        }
-    }
-}));
-
 
 app.use(express.json({ limit: "10mb" })); // Use Express's built-in method directly
 app.use(express.urlencoded({ limit: "10mb", extended: true })); // Use Express's built-in method directly
