@@ -43,7 +43,31 @@ exports.registerUser = async (req, res) => {
 
 // Login a user
 exports.loginUser = async (req, res) => {
-  console.log("hellp");
+  const { email, password } = req.body;
+
+  try {
+    // Find user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "Invalid credentials." });
+    }
+
+    // Compare provided password with hashed password in database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials." });
+    }
+
+    // Generate a JWT token
+    const token = jwt.sign({ id: user._id }, 'jwt', {
+      expiresIn: "1h",
+    });
+
+    res.json({ token, userId: user._id,msg:'looged in' });
+  } catch (error) {
+    console.error("Error logging in user:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
 exports.userInfo = async (req, res) => {
