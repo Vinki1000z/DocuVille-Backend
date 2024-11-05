@@ -45,7 +45,7 @@ router.post('/login', [
 
 // GET request to get specific user info
 // router.get("/users/:id", isAuth,isAdmin, userInfo);
-router.get('/users/role', isAuth, getUserRole);
+router.get('/users/role', getUserRole);
 
 router.delete('/users/:id', isAuth, deleteUserInfo);
 
