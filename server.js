@@ -9,8 +9,14 @@ const mongoose = require("mongoose");
 // Create an Express application
 const app = express();
 const PORT = 5000;
-// CORS configuration
-app.use(cors());
+const corsOptions = {
+  origin: ["https://docu-ville.vercel.app", "http://localhost:3000"], // Add your frontend domain and localhost for testing
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"], // Add headers as needed
+};
+
+app.use(cors(corsOptions));
+
 
 
 app.use(express.json({ limit: "10mb" })); // Use Express's built-in method directly
